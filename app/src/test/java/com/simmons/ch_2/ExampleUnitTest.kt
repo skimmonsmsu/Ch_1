@@ -1,4 +1,4 @@
-package com.simmons.ch_1
+package com.simmons.ch_2
 
 import org.junit.Test
 
