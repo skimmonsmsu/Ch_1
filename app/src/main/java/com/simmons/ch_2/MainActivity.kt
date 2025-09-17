@@ -1,6 +1,7 @@
 package com.simmons.ch_2
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,8 @@ import com.simmons.ch_2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var trueButton : Button
-    private lateinit var falseButton : Button
+    // private lateinit var trueButton : Button
+    // private lateinit var falseButton : Button
 
     private lateinit var binding : ActivityMainBinding
 
@@ -26,10 +27,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
 
         //trueButton = findViewById(R.id.true_button)
         //falseButton = findViewById(R.id.false_button)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.trueButton.setOnClickListener {
             Toast.makeText(
