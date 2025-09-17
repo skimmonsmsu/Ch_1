@@ -52,6 +52,21 @@ class MainActivity : AppCompatActivity() {
            .show()
         }
 
+        binding.nextButton.setOnClickListener {
+            currentIndex = (currentIndex + 1) % questionBank.size
+            val questionTextResId = questionBank[currentIndex].textResId
+            updateQuestion()
+        }
 
+        //val questionTextResId = questionBank[currentIndex].textResId
+        //binding.questionTextView.setText(questionTextResId)
+        updateQuestion()
+
+
+
+    }
+    private fun updateQuestion(){
+        val questionTextResId = questionBank[currentIndex].textResId
+        binding.questionTextView.setText(questionTextResId)
     }
 }
