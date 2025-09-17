@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.collection.emptyLongSet
 import com.simmons.ch_2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,20 +37,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.trueButton.setOnClickListener {
-            Toast.makeText(
+            /*Toast.makeText(
                 this,
                 R.string.correct_toast,
-                Toast.LENGTH_LONG
+                Toast.LENGTH_SHORT
             )
-            .show()
+            .show()*/
+            checkAnswer(true)
         }
         binding.falseButton.setOnClickListener {
-           Toast.makeText(
+           /*Toast.makeText(
                this,
                R.string.incorrect_toast,
-               Toast.LENGTH_LONG
+               Toast.LENGTH_SHORT
            )
-           .show()
+           .show()*/
+            checkAnswer(false)
         }
 
         binding.nextButton.setOnClickListener {
@@ -68,5 +71,19 @@ class MainActivity : AppCompatActivity() {
     private fun updateQuestion(){
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
+    }
+    private fun checkAnswer(userAnswer:Boolean){
+        val correctAnswer = questionBank[currentIndex].answer
+        val messageResId = if (userAnswer == correctAnswer) {
+            R.string.correct_toast
+        }
+        else{
+            R.string.incorrect_toast
+        }
+
+        Toast.makeText(this,
+            messageResId,
+            Toast.LENGTH_SHORT)
+            .show()
     }
 }
